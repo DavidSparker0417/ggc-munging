@@ -1,0 +1,8 @@
+{
+  "base": {
+    "UniswapV3Pool": {
+      "address": "0x888DE1ec2522cB8dD0a8C0e86E240123a7dEDaeE",
+      "startBlock": 13657071
+    }
+  }
+}

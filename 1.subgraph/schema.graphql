@@ -1,0 +1,146 @@
+type Transaction @entity {
+  # txn hash
+  id: ID!
+  # block txn was included in
+  blockNumber: BigInt!
+  # timestamp txn was confirmed
+  timestamp: BigInt!
+  # gas used during txn execution
+  gasUsed: BigInt!
+  gasPrice: BigInt!
+}
+
+type Burn @entity {
+  id: Bytes!
+  owner: Bytes! # address
+  origin: Bytes! # address
+  tickLower: Int! # int24
+  tickUpper: Int! # int24
+  amount: BigInt! # uint128
+  amount0: BigInt! # uint256
+  amount1: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Collect @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  recipient: Bytes! # address
+  tickLower: Int! # int24
+  tickUpper: Int! # int24
+  amount0: BigInt! # uint128
+  amount1: BigInt! # uint128
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CollectProtocol @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  recipient: Bytes! # address
+  amount0: BigInt! # uint128
+  amount1: BigInt! # uint128
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Flash @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  recipient: Bytes! # address
+  amount0: BigInt! # uint256
+  amount1: BigInt! # uint256
+  paid0: BigInt! # uint256
+  paid1: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type IncreaseObservationCardinalityNext @entity(immutable: true) {
+  id: Bytes!
+  observationCardinalityNextOld: Int! # uint16
+  observationCardinalityNextNew: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Initialize @entity(immutable: true) {
+  id: Bytes!
+  sqrtPriceX96: BigInt! # uint160
+  tick: Int! # int24
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Mint @entity {
+  id: Bytes!
+  sender: Bytes! # address
+  owner: Bytes! # address
+  origin: Bytes! # address
+  pool: Pool! # pool position within
+  tickLower: Int! # int24
+  tickUpper: Int! # int24
+  amount: BigInt! # uint128
+  amount0: BigInt! # uint256
+  amount1: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SetFeeProtocol @entity(immutable: true) {
+  id: Bytes!
+  feeProtocol0Old: Int! # uint8
+  feeProtocol1Old: Int! # uint8
+  feeProtocol0New: Int! # uint8
+  feeProtocol1New: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Swap @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  recipient: Bytes! # address
+  amount0: BigInt! # int256
+  amount1: BigInt! # int256
+  sqrtPriceX96: BigInt! # uint160
+  liquidity: BigInt! # uint128
+  tick: Int! # int24
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Pool @entity {
+  # Pool address
+  id: ID!
+  # pair tokens
+  token0: Token!
+  token1: Token!
+  # fee amount
+  feeTier: BigInt!
+  # in range liquidity
+  liquidity: BigInt!
+}
+
+type Token @entity {
+  # token address
+  id: ID!
+  # token symbol
+  symbol: String!
+  # token name
+  name: String!
+  # token decimals
+  decimals: BigInt!
+  # token total supply
+  totalSupply: BigInt!
+}

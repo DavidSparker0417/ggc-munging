@@ -1,0 +1,36 @@
+{
+  "Chain": "Base",
+  "addresses": {
+    "GGC": "0x4045B33f339A3027af80013FB5451fdBb01a4492",
+    "WETH": "0x4200000000000000000000000000000000000006",
+    "UniswapRouter": "0x198EF79F1F515F02dFE9e3115eD9fC07183f02fC",
+    "Swap Router02": "0x2626664c2603336E57B271c5C0b26F421741e481",
+    "NonFungiblePositionManager": "0x03a520b32C04BF3bEEf7BEb72E919cf822Ed34f1",
+    "FactoryV3": "0x33128a8fC17869897dcE68Ed026d694621f6FDfD",
+    "pools": [
+      {
+        "GGC_WETH": "0x888DE1ec2522cB8dD0a8C0e86E240123a7dEDaeE",
+        "USDC_WETH": "0x0b1c2dcbbfa744ebd3fc17ff1a96a1e1eb4b2d69"
+      }
+    ]
+  },
+  "plan": [
+    {
+      "subject": "deploy subgraph",
+      "purpose": "Get all historical information about the pool",
+      "information": {
+        "holdersList": "Get the list of holders for GGC&WETH pool with fee tier",
+        "record": "Increase & Decrease liquidity events. (mint, burn event)",
+        "deployed": "https://api.studio.thegraph.com/query/70383/basechain/v0.0.18"
+      }
+    },
+    {
+      "subject": "data process",
+      "purpose": "Generate the final result with csv style.",
+      "holderDetail": {
+        "addLiquidityTime": "Get the time when holder added or removed the liquidity.",
+        "amount": "Total amount calculated according to the duration liquidity holding."
+      }
+    }
+  ]
+}

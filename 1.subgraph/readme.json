@@ -1,0 +1,10 @@
+{
+  "hostedTheGraph": "https://thegraph.com/studio/subgraph/basechain/",
+  "buildStep": [
+    "graph init --studio basechain",
+    "graph auth --studio b358b8943624963bd8ba06963efe0994",
+    "yarn codegen",
+    "graph build",
+    "yarn deploy"
+  ]
+}
